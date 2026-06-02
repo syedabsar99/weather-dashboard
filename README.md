@@ -28,8 +28,9 @@ OpenWeather API
 https://openweathermap.org/api
 📸 Preview
 
-(Optional: Add screenshot of your app here for better presentation)
+## 📸 Preview
 
+![Weather Dashboard Screenshot](weather.png)
 📂 Project Structure
 weather-dashboard/
 │
