@@ -46,4 +46,4 @@ localStorage usage
 UI/UX improvements for real projects
 
 👨‍💻 Author
-GitHub: @syedabsar99
+👨‍💻 Author: [@syedabsar99](https://github.com/syedabsar99)
