@@ -44,6 +44,6 @@ DOM manipulation
 Async/Await & Fetch API
 localStorage usage
 UI/UX improvements for real projects
+
 👨‍💻 Author
 GitHub: @syedabsar99
-🔥 Afte
