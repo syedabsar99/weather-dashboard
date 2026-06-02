@@ -45,5 +45,5 @@ Async/Await & Fetch API
 localStorage usage
 UI/UX improvements for real projects
 
-👨‍💻 Author
-👨‍💻 Author: [@syedabsar99](https://github.com/syedabsar99)
+👨‍💻 Author :
+ [@syedabsar99](https://github.com/syedabsar99)
