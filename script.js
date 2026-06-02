@@ -6,6 +6,12 @@ const searchBtn = document.querySelector(".search button");
 const weatherIcon = document.querySelector(".weather-icon");
 let searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
 function renderSearchHistory() {
+  const recentBox = document.querySelector(".recent-searches");
+  if (searchHistory.length === 0) {
+    recentBox.style.display = "none";
+  } else {
+    recentBox.style.display = "block";
+  }
   const historyList = document.querySelector(".history-list");
 
   historyList.innerHTML = "";
@@ -110,8 +116,11 @@ searchBox.addEventListener("keydown", (event) => {
   }
 });
 const lastCity = localStorage.getItem("lastCity");
+const isFirstTime = !localStorage.getItem("visited");
 
-if (lastCity) {
+if (isFirstTime) {
+  localStorage.setItem("visited", "true");
+} else if (lastCity) {
   searchBox.value = lastCity;
   checkWeather(lastCity);
 }
