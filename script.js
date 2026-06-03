@@ -18,14 +18,15 @@ function renderSearchHistory() {
 
   searchHistory.forEach((city) => {
     const li = document.createElement("li");
+    li.addEventListener("click", () => {
+      console.log("Clicked:", city);
 
-    const cityName = document.createElement("span");
-    cityName.textContent = city;
-
-    cityName.addEventListener("click", () => {
       searchBox.value = city;
       checkWeather(city);
     });
+
+    const cityName = document.createElement("span");
+    cityName.textContent = city;
 
     const deleteBtn = document.createElement("span");
     deleteBtn.innerHTML = "&times;";
@@ -49,7 +50,9 @@ function renderSearchHistory() {
 }
 async function checkWeather(city) {
   document.body.style.cursor = "wait";
-  const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+  const response = await fetch(
+    apiUrl + encodeURIComponent(city) + `&appid=${apiKey}`,
+  );
   if (response.status == 404) {
     document.querySelector(".error").style.display = "block";
     document.querySelector(".weather").style.display = "none";
@@ -57,15 +60,20 @@ async function checkWeather(city) {
   } else {
     let data = await response.json();
     localStorage.setItem("lastCity", city);
+    city = city.trim();
+
     searchHistory = searchHistory.filter(
       (item) => item.toLowerCase() !== city.toLowerCase(),
     );
 
-    searchHistory.unshift(city);
+    searchHistory.unshift(
+      city.charAt(0).toUpperCase() + city.slice(1).toLowerCase(),
+    );
 
-    searchHistory = searchHistory.slice(0, 5);
+    searchHistory = searchHistory.slice(0, 4);
 
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+    renderSearchHistory();
     document.querySelector(".city").innerHTML =
       data.name + ", " + data.sys.country;
     document.querySelector(".description").innerHTML =
@@ -116,11 +124,8 @@ searchBox.addEventListener("keydown", (event) => {
   }
 });
 const lastCity = localStorage.getItem("lastCity");
-const isFirstTime = !localStorage.getItem("visited");
 
-if (isFirstTime) {
-  localStorage.setItem("visited", "true");
-} else if (lastCity) {
+if (lastCity) {
   searchBox.value = lastCity;
   checkWeather(lastCity);
 }
