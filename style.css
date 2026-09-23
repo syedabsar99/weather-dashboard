@@ -174,3 +174,48 @@ body {
     color: #ff6b6b;
     transform: scale(1.2) rotate(90deg);
 }
+
+@media (max-width: 480px) {
+  .card {
+    width: 95%;
+    margin: 30px auto 20px;
+    padding: 28px 18px;
+    border-radius: 16px;
+  }
+  .search input {
+    height: 48px;
+    padding: 8px 16px;
+    font-size: 15px;
+    margin-right: 10px;
+  }
+  .search button {
+    width: 48px;
+    height: 48px;
+  }
+  .weather-icon {
+    width: 130px;
+    margin-top: 20px;
+  }
+  .weather h1 {
+    font-size: 54px;
+  }
+  .weather h2 {
+    font-size: 30px;
+  }
+  .details {
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: space-around;
+    padding: 0;
+    margin-top: 30px;
+  }
+  .col {
+    font-size: 14px;
+  }
+  .col img {
+    width: 32px;
+  }
+  .humidity, .wind, .feels-like {
+    font-size: 18px;
+  }
+}
